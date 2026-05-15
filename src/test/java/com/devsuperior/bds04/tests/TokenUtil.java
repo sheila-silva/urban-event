@@ -1,8 +1,8 @@
 package com.devsuperior.bds04.tests;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -21,7 +21,7 @@ public class TokenUtil {
 
 	@Value("${security.client-secret}")
 	private String clientSecret;
-	
+
 	public String obtainAccessToken(MockMvc mockMvc, String username, String password) throws Exception {
 
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
@@ -31,12 +31,12 @@ public class TokenUtil {
 		params.add("password", password);
 
 		ResultActions result = mockMvc
-				.perform(post("/oauth2/token")
+				.perform(post("/oauth/token")
 						.params(params)
 						.with(httpBasic(clientId, clientSecret))
 						.accept("application/json;charset=UTF-8"))
-						.andExpect(status().isOk())
-						.andExpect(content().contentType("application/json;charset=UTF-8"));
+				.andExpect(status().isOk())
+				.andExpect(content().contentType("application/json;charset=UTF-8"));
 
 		String resultString = result.andReturn().getResponse().getContentAsString();
 
