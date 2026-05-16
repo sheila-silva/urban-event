@@ -87,20 +87,30 @@ Maven
 
 Pré-requisitos
 
-Java 17 instalado
+- Java 17 instalado
 
-Maven instalado
+- Maven instalado
 
-Insomnia ou Postman para testar os endpoints
+- Insomnia ou Postman para testar os endpoints
+
+
+<br/>
+
 
 **Clone o repositório**
 git clone https://github.com/seu-usuario/bds04.git
 
+<br/>
+
 **Entre na pasta do projeto**
 cd bds04
 
+<br/>
+
 **Rode o projeto**
 ./mvnw spring-boot:run
+
+<br/>
 
 A aplicação estará disponível em http://localhost:8080.
 
@@ -110,12 +120,15 @@ JDBC URL: jdbc:h2:mem:testdb
 Username: sa
 Password: (vazio)
 
+<br/>
 
 **Autenticação**
 
 O sistema utiliza OAuth2 com JWT. Para obter o token, faça uma requisição POST para /oauth/token:
 
-Headers:
+No Postman ou Insômnia coloque em 
+
+Headers
 
 Authorization: Basic bXljbGllbnRpZDpte==
 
@@ -148,4 +161,53 @@ Cities
 | POST | `/cities` | Cadastra uma nova cidade | ADMIN |
 
 
+<br/>
+
+Regras de Validação
+
+<br/>
+
+**City**
+
+name — obrigatório, não pode ser em branco
+
+<br/>
+
+**Event**
+
+name — obrigatório, não pode ser em branco
+date — deve ser uma data futura
+cityId — obrigatório
+
+<br/>
+
+**Controle de Acesso**
+
+| Endpoint | Sem token | CLIENT | ADMIN |
+|----------|-----------|--------|-------|
+| `GET /cities` | ✅ 200 | ✅ 200 | ✅ 200 |
+| `POST /cities` | ❌ 401 | ❌ 403 | ✅ 201 |
+| `GET /events` | ✅ 200 | ✅ 200 | ✅ 200 |
+| `POST /events` | ❌ 401 | ✅ 201 | ✅ 201 |
+
+
+**Casos de Teste**
+
+**EventController**
+
+- `POST /events` deve retornar **401 Unauthorized** para usuário não logado  
+- `POST /events` deve retornar **201 Created** para CLIENT logado e dados corretos  
+- `POST /events` deve retornar **201 Created** para ADMIN logado e dados corretos  
+- `POST /events` deve retornar **422 Unprocessable Entity** para ADMIN logado e nome em branco  
+- `POST /events` deve retornar **422 Unprocessable Entity** para ADMIN logado e data no passado  
+- `POST /events` deve retornar **422 Unprocessable Entity** para ADMIN logado e cidade nula  
+- `GET /events` deve retornar **200 OK** com página de recursos  
+
+**CityController** 
+
+- `POST /cities` deve retornar **401 Unauthorized** para usuário não logado  
+- `POST /cities` deve retornar **403 Forbidden** para CLIENT logado  
+- `POST /cities` deve retornar **201 Created** para ADMIN logado e dados corretos  
+- `POST /cities` deve retornar **422 Unprocessable Entity** para ADMIN logado e nome em branco  
+- `GET /cities` deve retornar **200 OK** com todos os recursos ordenados por nome
 
