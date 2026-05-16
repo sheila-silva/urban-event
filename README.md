@@ -93,19 +93,18 @@ Maven instalado
 
 Insomnia ou Postman para testar os endpoints
 
-# Clone o repositório
+**Clone o repositório**
 git clone https://github.com/seu-usuario/bds04.git
 
-# Entre na pasta do projeto
+**Entre na pasta do projeto**
 cd bds04
 
-# Rode o projeto
+**Rode o projeto**
 ./mvnw spring-boot:run
 
 A aplicação estará disponível em http://localhost:8080.
 
 O console do H2 estará disponível em http://localhost:8080/h2-console com as configurações:
-
 
 JDBC URL: jdbc:h2:mem:testdb
 Username: sa
@@ -115,6 +114,7 @@ Password: (vazio)
 **Autenticação**
 
 O sistema utiliza OAuth2 com JWT. Para obter o token, faça uma requisição POST para /oauth/token:
+
 Headers:
 
 Authorization: Basic bXljbGllbnRpZDpte==
@@ -130,7 +130,7 @@ O access_token retornado deve ser usado nas requisições protegidas no header:
 
 Authorization: Bearer {access_token}
 
-## Usuários Disponíveis
+**Usuários Disponíveis**
 
 | Usuário | Email | Senha | Perfil |
 |---------|-------|-------|--------|
@@ -138,9 +138,9 @@ Authorization: Bearer {access_token}
 | Bob | bob@gmail.com | 123456 | ROLE_ADMIN |
 
 
-## Endpoints
+**Endpoints**
 
-### Cities
+Cities
 
 | Método | Endpoint | Descrição | Acesso |
 |--------|----------|-----------|--------|
