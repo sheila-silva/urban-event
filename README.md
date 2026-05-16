@@ -243,10 +243,12 @@ cityId — obrigatório
 
 <br/>
 
+
 # Agradecimentos / Referências: 
 
+<br/>
 
-Dev - Superior Escola de Tecnologia
+Dev - Superior:  Escola de Tecnologia
 
 
 <br>
