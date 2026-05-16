@@ -85,6 +85,10 @@ Maven
 
 **Como Rodar o Projeto**
 
+
+<br/>
+
+
 Pré-requisitos
 
 - Java 17 instalado
@@ -98,6 +102,9 @@ Pré-requisitos
 
 
 **Clone o repositório**
+
+<br/>
+
 git clone https://github.com/seu-usuario/bds04.git
 
 <br/>
@@ -135,13 +142,20 @@ Authorization: Basic bXljbGllbnRpZDpte==
 Body (Form URL Encoded):
 
 grant_type=password
+
 username=ana@gmail.com
+
 password=123456
 
+<br/>
 
 O access_token retornado deve ser usado nas requisições protegidas no header:
 
 Authorization: Bearer {access_token}
+
+
+<br/>
+
 
 **Usuários Disponíveis**
 
@@ -149,6 +163,9 @@ Authorization: Bearer {access_token}
 |---------|-------|-------|--------|
 | Ana | ana@gmail.com | 123456 | ROLE_CLIENT |
 | Bob | bob@gmail.com | 123456 | ROLE_ADMIN |
+
+
+<br/>
 
 
 **Endpoints**
@@ -195,6 +212,8 @@ cityId — obrigatório
 
 
 **Casos de Teste**
+
+<br/>
 
 **EventController**
 
