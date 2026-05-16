@@ -124,8 +124,11 @@ A aplicação estará disponível em http://localhost:8080.
 O console do H2 estará disponível em http://localhost:8080/h2-console com as configurações:
 
 JDBC URL: jdbc:h2:mem:testdb
+
 Username: sa
+
 Password: (vazio)
+
 
 <br/>
 
