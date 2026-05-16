@@ -196,7 +196,9 @@ name — obrigatório, não pode ser em branco
 **Event**
 
 name — obrigatório, não pode ser em branco
+
 date — deve ser uma data futura
+
 cityId — obrigatório
 
 <br/>
