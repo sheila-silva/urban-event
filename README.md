@@ -77,11 +77,75 @@ Banco de dados H2 (em memória para testes)
 
 Bean Validation
 
+Maven
+
 
 <br/>
 
 
+**Como Rodar o Projeto**
 
+Pré-requisitos
+
+Java 17 instalado
+
+Maven instalado
+
+Insomnia ou Postman para testar os endpoints
+
+# Clone o repositório
+git clone https://github.com/seu-usuario/bds04.git
+
+# Entre na pasta do projeto
+cd bds04
+
+# Rode o projeto
+./mvnw spring-boot:run
+
+A aplicação estará disponível em http://localhost:8080.
+
+O console do H2 estará disponível em http://localhost:8080/h2-console com as configurações:
+
+
+JDBC URL: jdbc:h2:mem:testdb
+Username: sa
+Password: (vazio)
+
+
+**Autenticação**
+
+O sistema utiliza OAuth2 com JWT. Para obter o token, faça uma requisição POST para /oauth/token:
+Headers:
+
+Authorization: Basic bXljbGllbnRpZDpte==
+
+Body (Form URL Encoded):
+
+grant_type=password
+username=ana@gmail.com
+password=123456
+
+
+O access_token retornado deve ser usado nas requisições protegidas no header:
+
+Authorization: Bearer {access_token}
+
+## Usuários Disponíveis
+
+| Usuário | Email | Senha | Perfil |
+|---------|-------|-------|--------|
+| Ana | ana@gmail.com | 123456 | ROLE_CLIENT |
+| Bob | bob@gmail.com | 123456 | ROLE_ADMIN |
+
+
+## Endpoints
+
+### Cities
+
+| Método | Endpoint | Descrição | Acesso |
+|--------|----------|-----------|--------|
+| GET | `/cities` | Lista todas as cidades ordenadas por nome | Público |
+| POST | `/cities` | Cadastra uma nova cidade | ADMIN |
 
 
 
