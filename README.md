@@ -95,8 +95,6 @@ Pré-requisitos
 
 - Maven instalado
 
-- Insomnia ou Postman para testar os endpoints
-
 
 <br/>
 
